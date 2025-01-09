@@ -17,6 +17,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+import OtpModal from './OTPModal';
 
 type FormType = 'sign-in' | 'sign-up';
 
@@ -145,6 +146,9 @@ const AuthForm = ({ type }: { type: FormType }) => {
           </div>
         </form>
       </Form>
+      {accountId && (
+        <OtpModal email={form.getValues('email')} accountId={accountId} />
+      )}
     </>
   );
 };
