@@ -94,6 +94,8 @@ export const getFiles = async () => {
       queries
     );
 
+    console.log('FILES', files);
+
     return parseStringify(files);
   } catch (error) {
     handleError(error, 'Failed to get files');
