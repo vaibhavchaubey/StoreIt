@@ -7,6 +7,7 @@ import { convertFileSize } from '@/lib/utils';
 import FormattedDateTime from './FormattedDateTime';
 
 const Card = ({ file }: { file: Models.Document }) => {
+  console.log('FILE', file);
   return (
     <Link href={file.url} target="_blank" className="file-card">
       <div className="flex justify-between">
@@ -19,7 +20,7 @@ const Card = ({ file }: { file: Models.Document }) => {
         />
 
         <div className="flex flex-col items-end justify-between">
-          <ActionsDropdown />
+          <ActionsDropdown file={file} />
           <p className="body-1">{convertFileSize(file.size)}</p>
         </div>
       </div>
@@ -30,6 +31,9 @@ const Card = ({ file }: { file: Models.Document }) => {
           date={file.$createdAt}
           className="body-2 text-light-200"
         />
+        <p className="caption line-clamp-1 text-light-200">
+          By: {file.owner.fullName}
+        </p>
       </div>
     </Link>
   );
