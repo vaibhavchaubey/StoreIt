@@ -18,7 +18,11 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { actionsDropdownItems } from '@/constants';
-import { renameFile, updateFileUsers } from '@/lib/actions/file.actions';
+import {
+  deleteFile,
+  renameFile,
+  updateFileUsers,
+} from '@/lib/actions/file.actions';
 import { constructDownloadUrl } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -63,7 +67,8 @@ const ActionsDropdown = ({ file }: { file: Models.Document }) => {
       rename: () =>
         renameFile({ fileId: file.$id, name, extension: file.extension, path }),
       share: () => updateFileUsers({ fileId: file.$id, emails, path }),
-      delete: () => console.log('delete'),
+      delete: () =>
+        deleteFile({ fileId: file.$id, bucketFileId: file.bucketFileId, path }),
     };
 
     success = await actions[action.value as keyof typeof actions]();
@@ -126,7 +131,7 @@ const ActionsDropdown = ({ file }: { file: Models.Document }) => {
           {value === 'delete' && (
             <p className="delete-confirmation">
               Are you sure you want to delete {` `}
-              <span className="delete-file-name">{file.name}</span>
+              <span className="delete-file-name">{file.name}</span>?
             </p>
           )}
         </DialogHeader>
