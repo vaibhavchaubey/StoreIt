@@ -1,7 +1,7 @@
 <div align="center">
-  <br />
+ <br />
+    <img width="1800" alt="Readme-Thumbnail" src="https://github.com/user-attachments/assets/e14ef343-0651-4e21-8a73-0e0b2975c548" />
 
-     <img src="https://i.ibb.co/wR9G2k3/Readme-Thumbnail.png" alt="Project Banner">
   <br />
 
   <div>
